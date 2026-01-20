@@ -59,7 +59,12 @@ export default function PrivacyPolicy() {
             <li>Important service updates</li>
           </ul>
           <p>
-            <strong>Your phone number will never be shared with third parties for marketing purposes.</strong>
+            <strong>
+              Your mobile phone number and SMS opt-in data will not be shared with any third parties
+              or affiliates for marketing or promotional purposes. We will only share your information
+              with service providers who assist in delivering our SMS services (such as our SMS gateway provider),
+              and these providers are contractually prohibited from using your information for their own marketing purposes.
+            </strong>
           </p>
           <p>
             Message frequency varies based on your review volume. Standard message and data

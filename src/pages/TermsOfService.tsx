@@ -51,7 +51,14 @@ export default function TermsOfService() {
           <p>
             <strong>Message frequency varies</strong> based on your review volume. Message and
             data rates may apply. You may opt out at any time by replying STOP to any message
-            or updating your preferences in your account dashboard.
+            or updating your preferences in your account dashboard. Reply HELP to any message
+            for assistance.
+          </p>
+          <p>
+            <strong>SMS Delivery Disclaimer:</strong> Reviewed is not responsible for any delays,
+            failures in delivery, or any other issues related to the transmission or receipt of
+            text messages. Delivery of SMS messages is subject to carrier network availability
+            and other factors beyond our control.
           </p>
         </section>
 
