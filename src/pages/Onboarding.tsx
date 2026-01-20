@@ -183,7 +183,7 @@ export default function Onboarding() {
           <ol>
             <li>After submitting this form, you'll connect your Google Business Profile</li>
             <li>We'll start monitoring your reviews immediately</li>
-            <li>You'll receive SMS notifications with AI-suggested responses</li>
+            <li>You'll receive SMS notifications with suggested responses</li>
             <li>Simply reply to approve, and we'll post the response for you</li>
           </ol>
         </div>
