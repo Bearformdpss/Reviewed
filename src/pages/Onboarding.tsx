@@ -144,7 +144,7 @@ export default function Onboarding() {
                   <span className="consent-text">
                     I consent to receive text message notifications from Reviewed when new
                     reviews are posted to my Google Business Profile. These messages will include
-                    review details and AI-suggested responses for my approval.
+                    review details and suggested responses for my approval.
                     <br /><br />
                     <strong>Message frequency varies</strong> based on your review volume.
                     <strong> Message and data rates may apply.</strong>

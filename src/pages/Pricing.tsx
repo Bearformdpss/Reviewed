@@ -73,7 +73,7 @@ export default function Pricing() {
               </div>
               <div className="feature highlighted">
                 <span className="check">✓</span>
-                <span>AI Suggested Responses</span>
+                <span>Professional Suggested Responses</span>
               </div>
               <div className="feature highlighted">
                 <span className="check">✓</span>
