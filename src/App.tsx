@@ -1,5 +1,6 @@
 import { Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
+import Consent from './pages/Consent'
 import Onboarding from './pages/Onboarding'
 import Pricing from './pages/Pricing'
 import TermsOfService from './pages/TermsOfService'
@@ -14,7 +15,7 @@ function App() {
         <div className="nav-links">
           <Link to="/">Home</Link>
           <Link to="/pricing">Pricing</Link>
-          <Link to="/onboarding">Get Started</Link>
+          <Link to="/consent">Get Started</Link>
           <Link to="/contact">Contact</Link>
         </div>
       </nav>
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pricing" element={<Pricing />} />
+        <Route path="/consent" element={<Consent />} />
         <Route path="/onboarding" element={<Onboarding />} />
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />

@@ -9,7 +9,6 @@ export default function Onboarding() {
     email: '',
     phone: '',
     deliveryMethod: 'sms',
-    smsConsent: false,
   })
 
   const [submitted, setSubmitted] = useState(false)
@@ -131,33 +130,6 @@ export default function Onboarding() {
               </select>
             </div>
 
-            {/* SMS Consent Checkbox - THE KEY ELEMENT FOR A2P 10DLC */}
-            {(formData.deliveryMethod === 'sms' || formData.deliveryMethod === 'both') && (
-              <div className="consent-section">
-                <label className="consent-checkbox">
-                  <input
-                    type="checkbox"
-                    checked={formData.smsConsent}
-                    onChange={(e) => setFormData({ ...formData, smsConsent: e.target.checked })}
-                    required
-                  />
-                  <span className="consent-text">
-                    I consent to receive text message notifications from Reviewed when new
-                    reviews are posted to my Google Business Profile. These messages will include
-                    review details and suggested responses for my approval.
-                    <br /><br />
-                    <strong>Message frequency varies</strong> based on your review volume.
-                    <strong> Message and data rates may apply.</strong>
-                    <br /><br />
-                    Reply <strong>STOP</strong> to unsubscribe at any time. Reply <strong>HELP</strong> for assistance.
-                    <br /><br />
-                    By checking this box, I agree to the{' '}
-                    <Link to="/terms" target="_blank">Terms of Service</Link> and{' '}
-                    <Link to="/privacy" target="_blank">Privacy Policy</Link>.
-                  </span>
-                </label>
-              </div>
-            )}
           </div>
 
           {/* Submit Button */}
@@ -165,15 +137,9 @@ export default function Onboarding() {
             <button
               type="submit"
               className="cta-button"
-              disabled={(formData.deliveryMethod === 'sms' || formData.deliveryMethod === 'both') && !formData.smsConsent}
             >
               Continue to Connect Google Business Profile
             </button>
-            <p className="form-note">
-              {(formData.deliveryMethod === 'sms' || formData.deliveryMethod === 'both') && !formData.smsConsent && (
-                <span className="consent-required">* Please check the SMS consent checkbox to continue</span>
-              )}
-            </p>
           </div>
         </form>
 

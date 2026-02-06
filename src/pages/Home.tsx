@@ -10,7 +10,7 @@ export default function Home() {
           Reviewed helps restaurant owners manage their online reputation with
           AI-powered response suggestions delivered via SMS. Never miss a review again.
         </p>
-        <Link to="/onboarding" className="cta-button">Get Started Today</Link>
+        <Link to="/consent" className="cta-button">Get Started Today</Link>
       </section>
 
       {/* How It Works */}
@@ -62,7 +62,7 @@ export default function Home() {
       <section className="section cta-section">
         <h2>Ready to Transform Your Review Management?</h2>
         <p>Join restaurant owners who respond to reviews in minutes, not days.</p>
-        <Link to="/onboarding" className="cta-button">Start Your Free Trial</Link>
+        <Link to="/consent" className="cta-button">Start Your Free Trial</Link>
       </section>
     </main>
   )
