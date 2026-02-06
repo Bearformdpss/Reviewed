@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 export default function Consent() {
+  const [phone, setPhone] = useState('')
   const [smsConsent, setSmsConsent] = useState(false)
   const navigate = useNavigate()
 
@@ -9,7 +10,8 @@ export default function Consent() {
     e.preventDefault()
     if (smsConsent) {
       // Navigate to onboarding page after consent is given
-      navigate('/onboarding')
+      // Pass phone number if provided
+      navigate('/onboarding', { state: { phone } })
     }
   }
 
@@ -22,8 +24,29 @@ export default function Consent() {
         </p>
 
         <form onSubmit={handleSubmit} className="onboarding-form">
+          {/* Phone Number Field - OPTIONAL FOR A2P 10DLC COMPLIANCE */}
+          <div className="form-section">
+            <h2>Contact Information (Optional)</h2>
+
+            <div className="form-group">
+              <label htmlFor="phone">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="Enter your phone number (optional)"
+              />
+              <span className="form-help">
+                Optional: Provide your phone number to receive SMS notifications.
+                You can also provide this information in the next step.
+              </span>
+            </div>
+          </div>
+
           {/* SMS Consent Section - DEDICATED PAGE FOR A2P 10DLC COMPLIANCE */}
           <div className="form-section">
+            <h2>SMS Consent</h2>
             <div className="consent-section">
               <label className="consent-checkbox">
                 <input
