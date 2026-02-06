@@ -39,7 +39,10 @@ export default function TermsOfService() {
         <section>
           <h2>4. SMS Communications</h2>
           <p>
-            By opting in to SMS notifications, you consent to receive text messages from
+            <strong>Program Name:</strong> Reviewed
+          </p>
+          <p>
+            <strong>Program Description:</strong> By opting in to SMS notifications, you consent to receive text messages from
             Reviewed regarding:
           </p>
           <ul>
@@ -49,16 +52,31 @@ export default function TermsOfService() {
             <li>Service updates and alerts</li>
           </ul>
           <p>
-            <strong>Message frequency varies</strong> based on your review volume. Message and
-            data rates may apply. You may opt out at any time by replying STOP to any message
-            or updating your preferences in your account dashboard. Reply HELP to any message
-            for assistance.
+            <strong>Opting Out:</strong> You can cancel the SMS service at any time. Just text <strong>"STOP"</strong> to
+            any message from us. After you send the SMS message "STOP" to us, we will send you an SMS message to
+            confirm that you have been unsubscribed. After this, you will no longer receive SMS messages from us.
+            If you want to join again, just sign up as you did the first time and we will start sending SMS messages
+            to you again. You may also opt out by updating your preferences in your account dashboard.
           </p>
           <p>
-            <strong>SMS Delivery Disclaimer:</strong> Reviewed is not responsible for any delays,
-            failures in delivery, or any other issues related to the transmission or receipt of
-            text messages. Delivery of SMS messages is subject to carrier network availability
-            and other factors beyond our control.
+            <strong>Help and Support:</strong> If you are experiencing issues with the messaging program, you can reply
+            with the keyword <strong>HELP</strong> for more assistance, or you can get help directly at{' '}
+            <a href="mailto:reviewedcs@yahoo.com">reviewedcs@yahoo.com</a>.
+          </p>
+          <p>
+            <strong>Message Frequency and Costs:</strong> Message frequency varies based on your review volume.
+            As always, message and data rates may apply for any messages sent to you from us and to us from you.
+            If you have any questions about your text plan or data plan, it is best to contact your wireless provider.
+          </p>
+          <p>
+            <strong>Carrier Liability:</strong> Carriers are not liable for delayed or undelivered messages.
+            Reviewed is not responsible for any delays, failures in delivery, or any other issues related to the
+            transmission or receipt of text messages. Delivery of SMS messages is subject to carrier network
+            availability and other factors beyond our control.
+          </p>
+          <p>
+            <strong>Privacy:</strong> If you have any questions regarding privacy, please read our{' '}
+            <Link to="/privacy">Privacy Policy</Link>.
           </p>
         </section>
 
