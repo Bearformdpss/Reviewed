@@ -8,11 +8,9 @@ export default function Consent() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (smsConsent) {
-      // Navigate to onboarding page after consent is given
-      // Pass phone number if provided
-      navigate('/onboarding', { state: { phone } })
-    }
+    // User can proceed regardless of consent choice
+    // If they consented, pass phone number to onboarding
+    navigate('/onboarding', { state: { phone, smsConsent } })
   }
 
   return (
@@ -53,7 +51,6 @@ export default function Consent() {
                   type="checkbox"
                   checked={smsConsent}
                   onChange={(e) => setSmsConsent(e.target.checked)}
-                  required
                 />
                 <span className="consent-text">
                   I consent to receive text message notifications from Reviewed when new
@@ -78,13 +75,15 @@ export default function Consent() {
             <button
               type="submit"
               className="cta-button"
-              disabled={!smsConsent}
             >
-              I Consent - Continue to Registration
+              Continue to Registration
             </button>
             <p className="form-note">
               {!smsConsent && (
-                <span className="consent-required">* Please check the consent checkbox to continue</span>
+                <span className="form-help">
+                  Note: SMS consent is optional but required to use this service.
+                  You can provide consent during registration if you prefer.
+                </span>
               )}
             </p>
           </div>
