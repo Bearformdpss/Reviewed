@@ -8,7 +8,7 @@ export default function Onboarding() {
     ownerName: '',
     email: '',
     phone: '',
-    deliveryMethod: 'sms',
+    deliveryMethod: '',
   })
 
   const [submitted, setSubmitted] = useState(false)
@@ -100,16 +100,15 @@ export default function Onboarding() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="phone">Phone Number *</label>
+              <label htmlFor="phone">Phone Number (Optional)</label>
               <input
                 type="tel"
                 id="phone"
-                required
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                placeholder="Enter your phone number"
+                placeholder="Enter your phone number (optional)"
               />
-              <span className="form-help">This number will receive SMS notifications about your reviews.</span>
+              <span className="form-help">Optional: Provide your phone number if you'd like to receive SMS notifications about your reviews.</span>
             </div>
           </div>
 
@@ -121,11 +120,13 @@ export default function Onboarding() {
               <label htmlFor="deliveryMethod">Preferred Notification Method *</label>
               <select
                 id="deliveryMethod"
+                required
                 value={formData.deliveryMethod}
                 onChange={(e) => setFormData({ ...formData, deliveryMethod: e.target.value })}
               >
-                <option value="sms">SMS Text Messages</option>
+                <option value="" disabled>Select notification method...</option>
                 <option value="email">Email Only</option>
+                <option value="sms">SMS Text Messages</option>
                 <option value="both">Both SMS and Email</option>
               </select>
             </div>
