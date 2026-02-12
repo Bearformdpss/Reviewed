@@ -78,14 +78,6 @@ export default function Consent() {
             >
               Continue to Registration
             </button>
-            <p className="form-note">
-              {!smsConsent && (
-                <span className="form-help">
-                  Note: SMS consent is optional but required to use this service.
-                  You can provide consent during registration if you prefer.
-                </span>
-              )}
-            </p>
           </div>
         </form>
 
