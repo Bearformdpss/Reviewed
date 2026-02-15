@@ -5,12 +5,40 @@ export default function Home() {
     <main className="page home-page">
       {/* Hero Section */}
       <section className="hero">
-        <h1>Respond to Google Reviews in Minutes, Not Days</h1>
-        <p className="hero-subtitle">
-          Reviewed helps restaurant owners manage their online reputation with
-          AI-powered response suggestions delivered via SMS. Never miss a review again.
-        </p>
-        <Link to="/consent" className="cta-button">Get Started Today</Link>
+        <div className="hero-content">
+          <div className="hero-text">
+            <h1>Respond to Google Reviews in Minutes, Not Days</h1>
+            <p className="hero-subtitle">
+              Reviewed helps restaurant owners manage their online reputation with
+              AI-powered response suggestions delivered via SMS. Never miss a review again.
+            </p>
+            <Link to="/consent" className="cta-button">Get Started Today</Link>
+          </div>
+          <div className="hero-mockup">
+            <div className="iphone-frame">
+              <div className="iphone-notch" />
+              <div className="iphone-screen">
+                <div className="sms-header">REVIEWED</div>
+                <div className="sms-bubble">
+                  New 1-star review (R42) from Sarah M.:<br /><br />
+                  "Waited 45 minutes for our food and it was cold when it arrived..."
+                </div>
+                <div className="sms-bubble">
+                  Suggested response:<br />
+                  "We're sorry to hear about your experience. This isn't the standard we hold ourselves to..."
+                </div>
+                <div className="sms-bubble">
+                  Reply:<br />
+                  POST R42 (approve)<br />
+                  EDIT R42 &lt;your text&gt;<br />
+                  REWRITE R42
+                </div>
+                <div className="sms-bubble highlight">POST R42</div>
+              </div>
+              <div className="iphone-home-bar" />
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* How It Works */}
