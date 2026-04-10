@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 export default function Consent() {
   const [phone, setPhone] = useState('')
   const [smsConsent, setSmsConsent] = useState(false)
+  const [termsConsent, setTermsConsent] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -17,10 +18,16 @@ export default function Consent() {
         <div className="onboarding-container">
           <div className="success-message">
             <h1>You're All Set!</h1>
-            <p>
-              Thank you for signing up. You will start receiving SMS notifications at {phone} when
-              new reviews are posted to your Google Business Profile.
-            </p>
+            {smsConsent ? (
+              <p>
+                Thank you for signing up. You will start receiving SMS notifications at {phone} when
+                new reviews are posted to your Google Business Profile.
+              </p>
+            ) : (
+              <p>
+                Thank you! Your information has been received. You can enable SMS notifications at any time by returning to this page.
+              </p>
+            )}
             <Link to="/" className="cta-button">Return to Home</Link>
           </div>
         </div>
@@ -33,7 +40,7 @@ export default function Consent() {
       <div className="onboarding-container">
         <h1>SMS Notification Consent</h1>
         <p className="onboarding-subtitle">
-          Provide your phone number and consent below to start receiving SMS notifications about your Google reviews.
+          Provide your phone number below to receive SMS notifications about your Google reviews.
         </p>
 
         <form onSubmit={handleSubmit} className="onboarding-form">
@@ -59,28 +66,43 @@ export default function Consent() {
 
           {/* SMS Consent Section */}
           <div className="form-section">
-            <h2>SMS Consent</h2>
+            <h2>SMS Notifications</h2>
+
+            <p className="form-help" style={{ marginBottom: '12px' }}>
+              Message frequency varies based on your review volume. Message and data rates may apply.
+              Reply <strong>STOP</strong> to unsubscribe at any time. Reply <strong>HELP</strong> for assistance.
+            </p>
+
+            <div className="consent-section">
+              <label className="consent-checkbox">
+                <input
+                  type="checkbox"
+                  checked={smsConsent}
+                  onChange={(e) => setSmsConsent(e.target.checked)}
+                />
+                <span className="consent-text">
+                  I consent to receive text message notifications from Reviewed when new reviews are
+                  posted to my Google Business Profile. These messages will include review details
+                  and suggested responses for my approval. (Optional)
+                </span>
+              </label>
+            </div>
+          </div>
+
+          {/* Terms & Privacy Checkbox */}
+          <div className="form-section">
             <div className="consent-section">
               <label className="consent-checkbox">
                 <input
                   type="checkbox"
                   required
-                  checked={smsConsent}
-                  onChange={(e) => setSmsConsent(e.target.checked)}
+                  checked={termsConsent}
+                  onChange={(e) => setTermsConsent(e.target.checked)}
                 />
                 <span className="consent-text">
-                  I consent to receive text message notifications from Reviewed when new
-                  reviews are posted to my Google Business Profile. These messages will include
-                  review details and suggested responses for my approval.
-                  <br /><br />
-                  <strong>Message frequency varies</strong> based on your review volume.
-                  <strong> Message and data rates may apply.</strong>
-                  <br /><br />
-                  Reply <strong>STOP</strong> to unsubscribe at any time. Reply <strong>HELP</strong> for assistance.
-                  <br /><br />
-                  By checking this box, I agree to the{' '}
+                  I agree to the{' '}
                   <Link to="/terms" target="_blank">Terms of Service</Link> and{' '}
-                  <Link to="/privacy" target="_blank">Privacy Policy</Link>.
+                  <Link to="/privacy" target="_blank">Privacy Policy</Link>. *
                 </span>
               </label>
             </div>
@@ -91,15 +113,9 @@ export default function Consent() {
             <button
               type="submit"
               className="cta-button"
-              disabled={!smsConsent}
             >
               Sign Up for SMS Notifications
             </button>
-            {!smsConsent && (
-              <p className="form-note">
-                <span className="consent-required">* Please check the SMS consent checkbox to continue</span>
-              </p>
-            )}
           </div>
         </form>
       </div>
