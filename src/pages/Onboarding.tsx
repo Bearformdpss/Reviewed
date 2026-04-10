@@ -9,13 +9,16 @@ export default function Onboarding() {
     email: '',
     phone: '',
     deliveryMethod: '',
+    smsConsent: false,
   })
 
   const [submitted, setSubmitted] = useState(false)
 
+  const requiresSmsConsent =
+    formData.deliveryMethod === 'sms' || formData.deliveryMethod === 'both'
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // In production, this would submit to your backend
     setSubmitted(true)
   }
 
@@ -98,18 +101,6 @@ export default function Onboarding() {
                 placeholder="Enter your email address"
               />
             </div>
-
-            <div className="form-group">
-              <label htmlFor="phone">Phone Number (Optional)</label>
-              <input
-                type="tel"
-                id="phone"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                placeholder="Enter your phone number (optional)"
-              />
-              <span className="form-help">Optional: Provide your phone number if you'd like to receive SMS notifications about your reviews.</span>
-            </div>
           </div>
 
           {/* Notification Preferences */}
@@ -122,7 +113,9 @@ export default function Onboarding() {
                 id="deliveryMethod"
                 required
                 value={formData.deliveryMethod}
-                onChange={(e) => setFormData({ ...formData, deliveryMethod: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, deliveryMethod: e.target.value, smsConsent: false })
+                }
               >
                 <option value="" disabled>Select notification method...</option>
                 <option value="email">Email Only</option>
@@ -131,6 +124,49 @@ export default function Onboarding() {
               </select>
             </div>
 
+            {/* Phone number — shown when SMS is selected */}
+            {requiresSmsConsent && (
+              <div className="form-group">
+                <label htmlFor="phone">Phone Number *</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  required
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  placeholder="Enter your phone number"
+                />
+                <span className="form-help">This number will receive SMS notifications about your reviews.</span>
+              </div>
+            )}
+
+            {/* SMS Consent — required when SMS is selected */}
+            {requiresSmsConsent && (
+              <div className="consent-section">
+                <label className="consent-checkbox">
+                  <input
+                    type="checkbox"
+                    checked={formData.smsConsent}
+                    onChange={(e) => setFormData({ ...formData, smsConsent: e.target.checked })}
+                    required
+                  />
+                  <span className="consent-text">
+                    I consent to receive text message notifications from Reviewed when new
+                    reviews are posted to my Google Business Profile. These messages will include
+                    review details and suggested responses for my approval.
+                    <br /><br />
+                    <strong>Message frequency varies</strong> based on your review volume.
+                    <strong> Message and data rates may apply.</strong>
+                    <br /><br />
+                    Reply <strong>STOP</strong> to unsubscribe at any time. Reply <strong>HELP</strong> for assistance.
+                    <br /><br />
+                    By checking this box, I agree to the{' '}
+                    <Link to="/terms" target="_blank">Terms of Service</Link> and{' '}
+                    <Link to="/privacy" target="_blank">Privacy Policy</Link>.
+                  </span>
+                </label>
+              </div>
+            )}
           </div>
 
           {/* Submit Button */}
@@ -138,9 +174,15 @@ export default function Onboarding() {
             <button
               type="submit"
               className="cta-button"
+              disabled={requiresSmsConsent && !formData.smsConsent}
             >
               Continue to Connect Google Business Profile
             </button>
+            {requiresSmsConsent && !formData.smsConsent && (
+              <p className="form-note">
+                <span className="consent-required">* Please check the SMS consent checkbox to continue</span>
+              </p>
+            )}
           </div>
         </form>
 
@@ -150,7 +192,7 @@ export default function Onboarding() {
           <ol>
             <li>After submitting this form, you'll connect your Google Business Profile</li>
             <li>We'll start monitoring your reviews immediately</li>
-            <li>You'll receive SMS notifications with suggested responses</li>
+            <li>You'll receive notifications with suggested responses</li>
             <li>Simply reply to approve, and we'll post the response for you</li>
           </ol>
         </div>
